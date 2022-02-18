@@ -1,0 +1,304 @@
+create table position(
+	id serial primary key,
+	position_name varchar(50) unique not null,
+	position_type char(3),
+	min_salary integer,
+	max_salary integer,
+	constraint ak_position unique (position_name, position_type)
+);
+
+insert into position(position_name,position_type ,min_salary,max_salary) values ('intern','ITN',30000,40000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('pa junior','EMP',30000,40000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('pa level 1','EMP',41000,50000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('pa level 2','EMP',51000,55000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('pa level 3','EMP',56000,60000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('pa level 4','EMP',61000,65000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('human resource','EMP',55000,59000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('staff','EMP',50000,54000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('manager level 1','MNG',80000,100000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('manager level 2','MNG',100000,15000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('director level 1','DIR',160000,180000);
+insert into position(position_name,position_type ,min_salary,max_salary) values ('director level 2','DIR',190000,220000);
+
+-------------------
+
+create table employee(
+	id serial primary key,
+	position_id int references position,
+	ssn bigint unique not null,
+	firstName varchar(50)not null,
+	lastName varchar(50) not null,
+	gender varchar(50),
+	dob date,
+	email varchar(100) unique not null,
+	phoneNumber varchar(50),
+	workPlace smallint not null,
+	startDate date,
+	endDate date,
+	status smallint not null,
+	password varchar(100) not null
+);
+
+drop table employee ;
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (8,11111111,'Booth','William',
+'male','12/12/1989','booth.william@revature.net','555-555-5555',1,'05/01/1999',null,0,'booth@1');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (9,11111112,'Bowie','David',
+'male','10/10/1976','bowie.david@revature.net','666-666-6666',1,'02/01/1999',null,0,'bowie@2');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (6,11111113,'Elizabeth','Duke',
+'female','04/12/1990','elizabeth.duke@revature.net','777-777-7777',1,'03/01/2000',null,0,'elizabeth@3');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (11,11111114,'Grove','Andy',
+'female','12/12/1950','grove.andy@revature.net','111-111-1111',1,'08/14/2000','01/01/2015',1,'grove@4');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (10,11111115,'Hill','Joe',
+'male','12/12/1971','hill.joe@revature.net','123-111-1111',0,'03/11/2004',null,0,'hill@5');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (9,11111116,'Jame','William',
+'male','12/12/1968','jame.william@revature.net','111-123-1111',0,'05/01/2004','02/23/2018',1,'jame@6');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (8,11111117,'Nini','Xen',
+'male','12/12/1971','Nini.Xen@revature.net','111-111-1122',0,'05/01/2004','05/5/2019',1,'nini@7');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (8,11111118,'Hong','Wan',
+'male','12/12/1968','hong.wan@revature.net','323-111-1111',2,'05/01/2006',null,0,'hong@8');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (6,11111119,'Cathy','Jorge',
+'male','12/12/1972','cathy.jorge@revature.net','454-111-1111',0,'05/01/2006',null,0,'cathy@9');
+
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (7,11111120,'An','Vo',
+'male','10/10/1976','an.vo@revature.net','765-666-6666',1,'02/01/2007',null,0,'an@10');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (7,11111121,'Ngoc','Nhu',
+'female','04/12/1990','ngoc.nhu@revature.net','633-777-7777',1,'03/01/2008',null,0,'ngoc@11');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (5,11111122,'Vinh','Nguyen',
+'female','12/12/1950','vinh.nguyen@revature.net','234-111-1111',1,'08/14/2010',null,0,'vinh@12');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (5,11111123,'Hong','Joe',
+'male','12/12/1971','hong.joe@revature.net','984-111-1111',0,'03/11/2010',null,0,'hong@13');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (4,11111124,'Lan','Tim',
+'male','12/12/1968','lan.tim@revature.net','753-111-1111',0,'05/01/2010',null,0,'lan@14');
+
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (4,11111125,'Li','Minh',
+'male','12/12/1988','li.minh@revature.net','184-111-1111',0,'05/01/2010',null,0,'li@15');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (3,11111126,'Ngoc','Nga',
+'male','12/12/1998','ngoc.nga@revature.net','738-111-1111',0,'05/01/2016','01/23/2021',1,'ngoc@16');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (3,11111127,'Linh','Vo',
+'male','12/12/1979','linh.vo@revature.net','158-111-1111',0,'05/01/2016',null,0,'linh@17');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (2,11111128,'Vivian','Do',
+'male','12/12/1981','vivian.do@revature.net','947-111-1111',0,'05/01/2018',null,0,'vivian@18');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (2,11111129,'Viet','Wan',
+'male','12/12/1975','viet.wan@revature.net','111-864-1111',0,'05/01/2018',null,0,'viet@19');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (1,11111130,'Lan','Tim',
+'male','12/12/1968','lan.tim30@revature.net','111-636-1111',0,'05/01/2022',null,0,'lan@20');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (1,11111131,'Titi','Rich',
+'male','12/12/1990','titi.rich@revature.net','177-636-1111',0,'01/01/2022',null,0,'titi@21');
+
+insert into employee(position_id,ssn,firstname,lastname,gender,dob,
+email,phonenumber,workplace,startdate,enddate,status,"password")
+values (1,11111132,'Honku','Sam',
+'male','11/10/1987','honku.sam@revature.net','181-636-1111',0,'01/10/2022',null,0,'honku@22');
+
+
+------------------
+
+create table department(
+	id serial primary key,
+	department_name varchar(100) not null,
+	director_id int references position
+);
+
+insert into department(department_name,director_id) values ('Operation Department',12);
+insert into department(department_name,director_id) values ('Human resource Department',12);
+insert into department(department_name,director_id) values ('Accoutant Department',12);
+insert into department(department_name,director_id) values ('Development Department',11);
+insert into department(department_name,director_id) values ('Quality Control Department',11);
+
+ALTER TABLE department
+ADD CONSTRAINT director_constraint
+FOREIGN KEY (director_id)
+REFERENCES position(id);
+
+------------------
+
+create table team(
+	id serial primary key,
+	department_id int references department,
+	team_name varchar(100) not null,
+	manager_id int references position
+);
+
+
+insert into team (department_id,team_name,manager_id) values (1,'Team Operation',9);
+insert into team (department_id,team_name,manager_id) values (2,'Team Human Hunter',9);
+insert into team (department_id,team_name,manager_id) values (3,'Team accounting fighter',9);
+insert into team (department_id,team_name,manager_id) values (4,'Team Java Lagged',8);
+insert into team (department_id,team_name,manager_id) values (4,'Team Dark Web Crusaders',8);
+insert into team (department_id,team_name,manager_id) values (5,'Team Quality fighter',8);
+
+----------------------
+create table employee_team(
+	employee_id int references employee,
+	team_id int references team
+);
+
+drop table employee_team ;
+
+
+insert into employee_team(employee_id,team_id) values (1,null);
+insert into employee_team(employee_id,team_id) values (2,null);
+insert into employee_team(employee_id,team_id) values (3,null);
+insert into employee_team(employee_id,team_id) values (4,null);
+insert into employee_team(employee_id,team_id) values (5,null);
+insert into employee_team(employee_id,team_id) values (6,null);
+insert into employee_team(employee_id,team_id) values (7,null);
+insert into employee_team(employee_id,team_id) values (8,1);
+insert into employee_team(employee_id,team_id) values (9,1);
+insert into employee_team(employee_id,team_id) values (10,3);
+insert into employee_team(employee_id,team_id) values (11,3);
+insert into employee_team(employee_id,team_id) values (12,2);
+insert into employee_team(employee_id,team_id) values (13,2);
+insert into employee_team(employee_id,team_id) values (14,4);
+insert into employee_team(employee_id,team_id) values (15,5);
+insert into employee_team(employee_id,team_id) values (16,4);
+insert into employee_team(employee_id,team_id) values (17,4);
+insert into employee_team(employee_id,team_id) values (18,5);
+insert into employee_team(employee_id,team_id) values (19,5);
+insert into employee_team(employee_id,team_id) values (20,6);
+insert into employee_team(employee_id,team_id) values (21,6);
+insert into employee_team(employee_id,team_id) values (22,4);
+
+
+---------------
+create table address(
+	id serial primary key,
+	employee_id int references employee,
+	street_number int,
+	streetName_1 varchar(50),
+	streetName_2 varchar(50),
+	city varchar(50),
+	state varchar(50),
+	passcode int
+);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (1,111,'a1','b1','c1','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (2,222,'a2','b2','c2','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (3,333,'a3','b3','c3','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (4,444,'a4','b4','c4','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (5,555,'a5','b5','c5','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (6,666,'a6','b6','c6','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (7,777,'a7','b7','c7','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (8,888,'a8','b8','c8','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (9,999,'a9','b9','c9','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (10,100,'a10','b10','c10','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (11,101,'a11','b11','c11','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (12,102,'a12','b12','c12','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (13,103,'a13','b13','c13','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (14,104,'a14','b14','c14','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (15,105,'a15','b15','c15','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (16,106,'a16','b16','c16','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (17,107,'a17','b17','c17','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (18,108,'a18','b18','c18','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (19,109,'a19','b19','c19','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (20,120,'a20','b20','c20','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (21,121,'a21','b21','c21','California',91344);
+
+insert into address(employee_id,street_number,streetName_1,streetName_2,city,state,passcode)
+values (22,122,'a22','b22','c22','California',91344);
+
+
